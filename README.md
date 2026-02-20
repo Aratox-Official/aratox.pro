@@ -1,1 +1,1 @@
-[Click here to go to the web version](https://aratox-official.github.io/)
+[Click here to go to the web version](https://aratox.pro/)
