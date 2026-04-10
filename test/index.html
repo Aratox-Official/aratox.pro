@@ -1,35 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>very rizzy page, right?</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; }
-        #response { 
-            margin-top: 15px; 
-            padding: 15px; 
-            background: #fdfdfd; 
-            border: 1px solid #ddd; 
-            border-radius: 4px; 
-            white-space: pre-wrap;
-            font-family: monospace;
-        }
-        .status { font-weight: bold; color: #555; }
-    </style>
 </head>
 <body>
 
-    <h2>Automatic Worker Request</h2>
-    <div class="status">Status: <span id="status">Initializing...</span></div>
-    
-    <div id="response">Waiting for response...</div>
-
     <script>
         async function makeAutoRequest() {
-            const statusEl = document.getElementById('status');
-            const responseEl = document.getElementById('response');
-            
+            const statusEl = document.createElement('span');
+            const responseEl = document.createElement('div');
+
+            statusEl.textContent = 'Initializing...';
+
             statusEl.textContent = 'Requesting data...';
 
             try {
@@ -50,13 +34,8 @@
                 }
 
                 statusEl.textContent = 'Success!';
-                statusEl.style.color = 'green';
-                responseEl.textContent = data;
 
             } catch (error) {
-                statusEl.textContent = 'Failed';
-                statusEl.style.color = 'red';
-                responseEl.textContent = 'Error: ' + error.message;
                 console.error('Auto-fetch failed:', error);
             }
         }
