@@ -4,101 +4,188 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery</title>
-  <link rel="shortcut icon" type="image/x-icon" href="https://yt3.googleusercontent.com/RvY94TcGMj_BaaQtOJzrWjONB9G8fzDLD6zLaynVFrHruhqeDmIWUqziflCjCkZMhKg8Xshw=s160-c-k-c0x00ffffff-no-rj">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://yt3.googleusercontent.com/RvY94TcGMj_BaaQtOJzrWjONB9G8fzDLD6zLaynVFrHruhqeDmIWUqziflCjCkZMhKg8Xshw=s160-c-k-c0x00ffffff-no-rj"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #161618;
+      color: #b0b0b0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #242428;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #f0f0f0;
+      line-height: 1.2;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: #888;
+      text-decoration: none;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .back-link:hover { color: #ccc; border-color: #666; }
+
+    section { margin-bottom: 2.8rem; }
+
+    h2 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #505050;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .grid-item {
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid #2a2a30;
+      background: #1e1e22;
+    }
+
+    .grid-item img,
+    .grid-item video {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.15s;
+    }
+
+    .grid-item img:hover { opacity: 0.85; }
+  </style>
 </head>
-<body class="p-6 bg-gray-900 text-gray-300 min-h-screen flex flex-col">
-  <header class="mb-8 flex justify-between items-center">
-    <h1 class="text-4xl font-bold text-white">Gallery</h1>
-    <a href="https://aratox-official.github.io/" class="bg-gray-700 rounded-full px-4 py-2 hover:bg-gray-600 text-white">Back to Home</a>
-  </header>
+<body>
+<div class="wrap">
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mb-12">
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-09-12 08.51.49.png" alt="Screenshot 1" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-09-13 220748.png" alt="Screenshot 2" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-09-14 190323.png" alt="Screenshot 3" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
+  <div class="header">
+    <h1>Gallery</h1>
+    <a class="back-link" href="https://aratox-official.github.io/">← Back</a>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mb-12">
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/image_2025-09-14_191122738.png" alt="Screenshot 4" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-09-15 13.49.33.png" alt="Screenshot 5" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <video controls class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300">
-        <source src="Images/puffer_fish_date.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
+  <section>
+    <h2>Screenshots &amp; Clips</h2>
+    <div class="grid">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mb-12">
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <video controls class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300">
-        <source src="Images/VID_20250920_183308_858.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/image_2025-09-23_211804066.png" alt="Screenshot 6" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-09-25 002305.png" alt="Screenshot 7" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-  </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-09-12 08.51.49.png" alt="Screenshot 1" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-09-13 220748.png" alt="Screenshot 2" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-09-14 190323.png" alt="Screenshot 3" />
+      </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mb-12">
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-09-25 214258.png" alt="Screenshot 8" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/image_2025-09-25_215743115.png" alt="Screenshot 9" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/image_2025-09-26_022702125.png" alt="Screenshot 10" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-  </div>
+      <div class="grid-item">
+        <img src="Images/image_2025-09-14_191122738.png" alt="Screenshot 4" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-09-15 13.49.33.png" alt="Screenshot 5" />
+      </div>
+      <div class="grid-item">
+        <video controls>
+          <source src="Images/puffer_fish_date.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mb-12">
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <video controls class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300">
-        <source src="Images/Natural_Disaster_Survival.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <video controls class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300">
-        <source src="Images/sweeper_geese.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/Screenshot 2025-10-14 204847.png" alt="Screenshot 12" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-  </div>
+      <div class="grid-item">
+        <video controls>
+          <source src="Images/VID_20250920_183308_858.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="grid-item">
+        <img src="Images/image_2025-09-23_211804066.png" alt="Screenshot 6" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-09-25 002305.png" alt="Screenshot 7" />
+      </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mb-12">
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/image_2025-10-14_220316491.png" alt="Screenshot 13" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <img src="Images/image_2025-10-15_190806353.png" alt="Screenshot 14" class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300" />
-    </div>
-    <div class="overflow-hidden rounded-lg shadow-lg">
-      <video controls class="w-full h-auto object-cover hover:scale-105 transform transition-transform duration-300">
-        <source src="Images/broke_nigga.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-09-25 214258.png" alt="Screenshot 8" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/image_2025-09-25_215743115.png" alt="Screenshot 9" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/image_2025-09-26_022702125.png" alt="Screenshot 10" />
+      </div>
 
+      <div class="grid-item">
+        <video controls>
+          <source src="Images/Natural_Disaster_Survival.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="grid-item">
+        <video controls>
+          <source src="Images/sweeper_geese.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="grid-item">
+        <img src="Images/Screenshot 2025-10-14 204847.png" alt="Screenshot 12" />
+      </div>
+
+      <div class="grid-item">
+        <img src="Images/image_2025-10-14_220316491.png" alt="Screenshot 13" />
+      </div>
+      <div class="grid-item">
+        <img src="Images/image_2025-10-15_190806353.png" alt="Screenshot 14" />
+      </div>
+      <div class="grid-item">
+        <video controls>
+          <source src="Images/broke_nigga.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+  </section>
+
+</div>
 </body>
 </html>
