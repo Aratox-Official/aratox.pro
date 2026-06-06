@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Hosting Interstellar on GitHub Codespaces - Aratox</title>
+
+  <meta name="description" content="How to self-host the Interstellar proxy (ad-free) on GitHub Codespaces for free." />
+  <meta name="author" content="Aratox" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://yt3.googleusercontent.com/RvY94TcGMj_BaaQtOJzrWjONB9G8fzDLD6zLaynVFrHruhqeDmIWUqziflCjCkZMhKg8Xshw=s160-c-k-c0x00ffffff-no-rj">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #161618;
+      color: #b0b0b0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #242428;
+    }
+
+    .page-title h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #f0f0f0;
+      line-height: 1.3;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: #999; text-decoration: none; }
+
+    section { margin-bottom: 2.8rem; }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #d0d0d0;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: #999; margin-bottom: 0.7rem; }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: #7eaadf; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82em;
+      background: #1e1e22;
+      border: 1px solid #2a2a30;
+      border-radius: 3px;
+      padding: 0.1em 0.35em;
+      color: #c0c0c0;
+    }
+
+    pre {
+      background: #111113;
+      border: 1px solid #242428;
+      border-radius: 5px;
+      padding: 0.85rem 1rem;
+      margin: 0.75rem 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: #c0c0c0;
+      line-height: 1.6;
+    }
+
+    .note {
+      border-left: 2px solid #2a2a30;
+      padding-left: 0.9rem;
+      margin: 0.8rem 0;
+      font-size: 0.88rem;
+      color: #666;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #242428;
+      margin: 2rem 0;
+    }
+
+    .footer {
+      font-size: 0.8rem;
+      color: #404048;
+      padding-top: 2rem;
+      border-top: 1px solid #242428;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">← Back</a>
+
+  <div class="page-title">
+    <h1>Self-Hosting Interstellar on GitHub Codespaces</h1>
+  </div>
+
+  <section>
+    <p>This is a quick rundown of how to get <a href="https://github.com/UseInterstellar/Interstellar" target="_blank" rel="noopener">Interstellar</a> running on GitHub Codespaces for free, using the ad-free branch. You don't need a server, a credit card, or anything installed locally - just a GitHub account.</p>
+    <p>GitHub gives you 120 core-hours and 15 GB-months of Codespace usage per month on the free plan, which is more than enough for this.</p>
+  </section>
+
+  <section>
+    <p>Head to <a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a> and click <strong>New codespace</strong> in the top right. From there, click <strong>Select a repository</strong> and search for <code>UseInterstellar/Interstellar</code>. Select it, then open the <strong>Branch</strong> dropdown and switch it from <code>main</code> to <code>Ad-Free</code>. Leave the machine type at the default 2-core and hit <strong>Create codespace</strong>.</p>
+    <p>It'll take about a minute to spin up. Once the browser-based editor loads, you're in.</p>
+    <div class="note">Using the Ad-Free branch means ads are stripped out of the UI. The proxy itself works the same as the main branch.</div>
+  </section>
+
+  <section>
+    <p>Open the terminal with <code>Ctrl + `</code> if it isn't already showing, then run:</p>
+    <pre>npm install</pre>
+    <p>Wait for it to finish - you'll see something like <code>added N packages</code> when it's done. Then start the server:</p>
+    <pre>npm start</pre>
+    <p>The server runs on port <strong>8080</strong> by default. You'll see <code>Listening on port 8080</code> in the terminal output.</p>
+  </section>
+
+  <section>
+    <p>Click the <strong>Ports</strong> tab in the bottom panel. Port <code>8080</code> should be listed with a forwarded address. Hover over it and click the globe icon to open it in a new tab.</p>
+    <p>The URL will look something like <code>https://&lt;your-codespace-name&gt;-8080.app.github.dev</code>. By default the port is private, so only you can access it while signed into GitHub. If you want to share it, right-click the port entry and set visibility to <strong>Public</strong> - and you'll get a popup to confirm this when you first open it anyway, just click <strong>Make public</strong>.</p>
+    <div class="note">If the proxy isn't loading correctly, double-check that you clicked Make public. This is the most common reason it breaks.</div>
+  </section>
+
+  <section>
+    <p>To stop the proxy without shutting down the whole Codespace, press <code>Ctrl + C</code> in the terminal. That's it - the Node process stops and you're back at a normal shell. Run <code>npm start</code> again whenever you want to bring it back up.</p>
+    <p>If the process is frozen and <code>Ctrl + C</code> isn't doing anything, you can force-kill it:</p>
+    <pre>pkill -f "node"</pre>
+  </section>
+
+  <section>
+    <p>When you're done for the day, stop the Codespace so it doesn't eat into your free compute hours. Open the Command Palette with <code>Ctrl + Shift + P</code> and run:</p>
+    <pre>Codespaces: Stop Current Codespace</pre>
+    <p>Or go back to <a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a>, click the <strong>⋯</strong> menu next to your Codespace, and hit <strong>Stop codespace</strong>. Either way works.</p>
+    <p>Codespaces auto-suspend after 30 minutes of inactivity anyway, but stopping manually is cleaner. A stopped Codespace only counts against your storage quota, not your compute hours. Next time you come back, just resume it from the same dashboard and run <code>npm start</code> again.</p>
+    <div class="note">If you want to get rid of it entirely, you can delete it from the dashboard. Just make sure you don't have any uncommitted changes you care about - deleting a Codespace is permanent.</div>
+  </section>
+
+  <section>
+    <hr>
+    <h3>Quick reference</h3>
+    <pre># Install dependencies
+npm install
+
+# Start the server
+npm start
+
+# Stop the server
+Ctrl + C
+
+# Force-kill if frozen
+pkill -f "node"
+
+# Stop the Codespace (Command Palette)
+Codespaces: Stop Current Codespace</pre>
+  </section>
+
+  <div class="footer">
+    Guide by <a href="index.html">Aratox</a> - <a href="https://github.com/UseInterstellar/Interstellar" target="_blank" rel="noopener">UseInterstellar/Interstellar</a> - <a href="https://docs.github.com/en/codespaces" target="_blank" rel="noopener">GitHub Codespaces Docs ↗</a>
+  </div>
+
+</div>
+</body>
+</html>
