@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Self-Hosting Interstellar on GitHub Codespaces - Aratox</title>
+  <title>Self-Hosting Interstellar on GitHub Codespaces</title>
 
   <meta name="description" content="How to self-host the Interstellar proxy (ad-free) on GitHub Codespaces for free." />
   <meta name="author" content="Aratox" />
@@ -124,13 +124,13 @@
   </div>
 
   <section>
-    <p>This is a quick rundown of how to get <a href="https://github.com/UseInterstellar/Interstellar" target="_blank" rel="noopener">Interstellar</a> running on GitHub Codespaces for free, using the ad-free branch. You don't need a server, a credit card, or anything installed locally - just a GitHub account.</p>
+    <p>This is guide of how to get <a href="https://github.com/UseInterstellar/Interstellar" target="_blank" rel="noopener">Interstellar</a> running on GitHub Codespaces for free, using the ad-free branch. You don't need anything other than a GitHub account.</p>
     <p>GitHub gives you 120 core-hours and 15 GB-months of Codespace usage per month on the free plan, which is more than enough for this.</p>
   </section>
 
   <section>
-    <p>Head to <a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a> and click <strong>New codespace</strong> in the top right. From there, click <strong>Select a repository</strong> and search for <code>UseInterstellar/Interstellar</code>. Select it, then open the <strong>Branch</strong> dropdown and switch it from <code>main</code> to <code>Ad-Free</code>. Leave the machine type at the default 2-core and hit <strong>Create codespace</strong>.</p>
-    <p>It'll take about a minute to spin up. Once the browser-based editor loads, you're in.</p>
+    <p>Go to <a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a> and click <strong>New codespace</strong> in the top right. From there, click <strong>Select a repository</strong> and type in <code>UseInterstellar/Interstellar</code>. Select it, then open the <strong>Branch</strong> dropdown and switch it from <code>main</code> to <code>Ad-Free</code>. Leave the machine type at the default 2-core and hit <strong>Create codespace</strong>.</p>
+    <p>This should take a minute to set up your codespace. Once the browser-based editor loads, you're in.</p>
     <div class="note">Using the Ad-Free branch means ads are stripped out of the UI. The proxy itself works the same as the main branch.</div>
   </section>
 
@@ -144,10 +144,15 @@
 
   <section>
     <p>Click the <strong>Ports</strong> tab in the bottom panel. Port <code>8080</code> should be listed with a forwarded address. Hover over it and click the globe icon to open it in a new tab.</p>
-    <p>The URL will look something like <code>https://&lt;your-codespace-name&gt;-8080.app.github.dev</code>. By default the port is private, so only you can access it while signed into GitHub. If you want to share it, right-click the port entry and set visibility to <strong>Public</strong> - and you'll get a popup to confirm this when you first open it anyway, just click <strong>Make public</strong>.</p>
+    <p>The link will look something like <code>https://&lt;your-codespace-name&gt;-8080.app.github.dev</code>. By default, the port is private - so only you can access it while signed into GitHub. If you want to share it, right-click the port entry and set visibility to <strong>Public</strong> - and you'll get a popup to confirm this when you first open it anyway, just click <strong>Make public</strong>.</p>
     <div class="note">If the proxy isn't loading correctly, double-check that you clicked Make public. This is the most common reason it breaks.</div>
   </section>
 
+  <section>
+    <p>You have successfully set up Interstellar and are ready to browse the web freely. Some websites may not work as a result of the way that Interstellar's tunnelling works, but most websites are supported.</p>
+    <p>The following steps will explore how to turn off the proxy (once you're done using it; this'll save compute resources). They are not related to the setup of Interstellar.</p>
+  </section>
+  
   <section>
     <p>To stop the proxy without shutting down the whole Codespace, press <code>Ctrl + C</code> in the terminal. That's it - the Node process stops and you're back at a normal shell. Run <code>npm start</code> again whenever you want to bring it back up.</p>
     <p>If the process is frozen and <code>Ctrl + C</code> isn't doing anything, you can force-kill it:</p>
@@ -155,11 +160,9 @@
   </section>
 
   <section>
-    <p>When you're done for the day, stop the Codespace so it doesn't eat into your free compute hours. Open the Command Palette with <code>Ctrl + Shift + P</code> and run:</p>
-    <pre>Codespaces: Stop Current Codespace</pre>
-    <p>Or go back to <a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a>, click the <strong>⋯</strong> menu next to your Codespace, and hit <strong>Stop codespace</strong>. Either way works.</p>
-    <p>Codespaces auto-suspend after 30 minutes of inactivity anyway, but stopping manually is cleaner. A stopped Codespace only counts against your storage quota, not your compute hours. Next time you come back, just resume it from the same dashboard and run <code>npm start</code> again.</p>
-    <div class="note">If you want to get rid of it entirely, you can delete it from the dashboard. Just make sure you don't have any uncommitted changes you care about - deleting a Codespace is permanent.</div>
+    <p>When you're done using the proxy for the day, stop the Codespace so it doesn't use your free compute hours. Go back to <a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a>, click the <strong>⋯</strong> menu next to your Codespace, and hit <strong>Stop codespace</strong>.</p>
+    <p>Codespaces auto-suspend after 30 minutes of inactivity anyway, but stopping manually is cleaner. A stopped Codespace only counts against your storage quota, not your compute hours. Next time you come back, just resume it from the same dashboard (<a href="https://github.com/codespaces" target="_blank" rel="noopener">github.com/codespaces</a>) and run <code>npm start</code> again.</p>
+    <div class="note">If you want to get rid of the codespace entirely, you can delete it from the dashboard. Just make sure you don't have any uncommitted changes you care about - deleting a Codespace is permanent.</div>
   </section>
 
   <section>
@@ -182,7 +185,7 @@ Codespaces: Stop Current Codespace</pre>
   </section>
 
   <div class="footer">
-    Guide by <a href="index.html">Aratox</a> - <a href="https://github.com/UseInterstellar/Interstellar" target="_blank" rel="noopener">UseInterstellar/Interstellar</a> - <a href="https://docs.github.com/en/codespaces" target="_blank" rel="noopener">GitHub Codespaces Docs ↗</a>
+    A guide by <a href="index.html">Aratox</a> - <a href="https://github.com/UseInterstellar/Interstellar" target="_blank" rel="noopener">UseInterstellar/Interstellar</a> - <a href="https://docs.github.com/en/codespaces" target="_blank" rel="noopener">GitHub Codespaces Docs ↗</a>
   </div>
 
 </div>
